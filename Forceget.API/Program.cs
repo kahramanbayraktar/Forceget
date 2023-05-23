@@ -1,4 +1,5 @@
 using Forceget.Data;
+using Forceget.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Forceget.API

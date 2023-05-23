@@ -1,4 +1,5 @@
-﻿using Forceget.Data;
+﻿using Domain.Entities;
+using Forceget.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Forceget.API.Controllers
@@ -20,6 +21,14 @@ namespace Forceget.API.Controllers
             var offers = await _repository.GetOffersByUserName(userName);
 
             return Ok(offers);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] Offer offer)
+        {
+            await _repository.CreateOffer(offer);
+
+            return Ok();
         }
     }
 }

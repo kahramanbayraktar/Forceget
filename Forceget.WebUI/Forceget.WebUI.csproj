@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Forceget.Data\Forceget.Data.csproj" />
     <ProjectReference Include="..\Forceget.Domain\Forceget.Domain.csproj" />
   </ItemGroup>
 

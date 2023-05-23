@@ -1,9 +1,26 @@
 ﻿@using Domain.Entities;
 @model IEnumerable<Offer>
 
-@foreach (var offer in Model)
-{
-     @Html.DisplayFor(modelItem => offer.OfferId)
-}
+<table id="offers">
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Quote
+        </th>
+    </tr>
+    @foreach (var offer in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => offer.OfferId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => offer.Quote)
+            </td>
+        </tr>
+    }
+</table>
 
 <a class="nav-link text-dark" asp-area="" asp-controller="Offer" asp-action="Create">Create</a>
