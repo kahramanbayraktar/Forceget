@@ -19,10 +19,10 @@ namespace Forceget.Data
             return base.SaveChangesAsync(cancellationToken);
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            //modelBuilder.RemovePluralizing TODO
-            base.OnModelCreating(modelBuilder);
-        }
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    //modelBuilder.RemovePluralizing TODO
+        //    base.OnModelCreating(modelBuilder);
+        //}
     }
 }

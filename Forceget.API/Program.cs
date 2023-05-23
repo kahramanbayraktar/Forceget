@@ -22,6 +22,15 @@ namespace Forceget.API
 
             var app = builder.Build();
 
+            // TODO: move it to an extension class
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                var context = services.GetRequiredService<OfferContext>();
+                context.Database.Migrate();
+                OfferContextSeed.SeedAsync(context).Wait();
+            }            
+
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
@@ -32,7 +41,6 @@ namespace Forceget.API
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 
