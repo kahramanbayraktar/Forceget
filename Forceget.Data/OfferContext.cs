@@ -10,13 +10,19 @@ namespace Forceget.Data
 
         }
 
-        public  DbSet<Offer> Offers { get; set; }
+        public DbSet<Offer> Offers { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             // Add custom modifications if needed
 
             return base.SaveChangesAsync(cancellationToken);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //modelBuilder.RemovePluralizing TODO
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

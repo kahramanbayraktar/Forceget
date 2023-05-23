@@ -2,7 +2,7 @@
 
 namespace Forceget.Data
 {
-    public interface IRepository
+    public interface IRepository // TODO: make this generic
     {
         Task<IEnumerable<Offer>> GetOffersByUserName(string userName);
     }

@@ -18,7 +18,8 @@ namespace Forceget.WebUI.Controllers
                 BaseAddress = new Uri(_configuration.GetConnectionString("ApiBaseAddress")!)
             };
 
-            var offers = client.GetFromJsonAsync<IEnumerable<Offer>>("/offer");
+            var userName = "karr";
+            var offers = client.GetFromJsonAsync<IEnumerable<Offer>>($"/offer/{userName}").GetAwaiter(); // TODO: adjust async
 
             return View();
         }

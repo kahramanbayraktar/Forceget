@@ -1,3 +1,5 @@
+using Forceget.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Forceget.API
 {
@@ -8,6 +10,10 @@ namespace Forceget.API
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddDbContext<OfferContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("ForcegetDb")));
+
+            builder.Services.AddScoped<IRepository, SqlRepository>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
