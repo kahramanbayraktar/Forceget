@@ -1,4 +1,5 @@
 ﻿using Domain.Entities;
+using Forceget.WebUI.Models.Offer;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Forceget.WebUI.Controllers
@@ -23,6 +24,22 @@ namespace Forceget.WebUI.Controllers
             var offers = await client.GetFromJsonAsync<IEnumerable<Offer>>($"offer/{userName}"); // TODO: adjust async
 
             return View(offers);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create([Bind("Mode,Movement,Incoterm,Package,Length,Weight,Currency,Quote")] OfferCreateViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+
+            return View();
         }
     }
 }
