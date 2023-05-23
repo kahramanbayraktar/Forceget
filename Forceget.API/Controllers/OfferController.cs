@@ -14,7 +14,7 @@ namespace Forceget.API.Controllers
             _repository = repository;
         }
 
-        [HttpGet("/{userName}")]
+        [HttpGet("{userName}")]
         public async Task<IActionResult> Get(string userName)
         {
             var offers = await _repository.GetOffersByUserName(userName);

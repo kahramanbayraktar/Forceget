@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Domain.Entities;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Forceget.WebUI.Controllers
 {
@@ -11,7 +12,7 @@ namespace Forceget.WebUI.Controllers
             _configuration = configuration;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             HttpClient client = new()
             {
@@ -19,9 +20,9 @@ namespace Forceget.WebUI.Controllers
             };
 
             var userName = "karr";
-            var offers = client.GetFromJsonAsync<IEnumerable<Offer>>($"/offer/{userName}").GetAwaiter(); // TODO: adjust async
+            var offers = await client.GetFromJsonAsync<IEnumerable<Offer>>($"offer/{userName}"); // TODO: adjust async
 
-            return View();
+            return View(offers);
         }
     }
 }
